@@ -1,0 +1,45 @@
+﻿<script type="text/javascript">
+    $('#startGame').click(function () { game.init(CANVAS_ID); ui.overlayClose(); });
+    $('#top100Link').click(function (e) {
+        e.preventDefault();
+        ui.loadOverlay(ui.files.highScore);
+    });
+
+    if (highScore.isEmpty) {
+        for (var i = 1; i <= 10; i++) {
+            highScore.save('Player', i * 5000, levels.length - 1);
+        }
+    }
+
+    highScore.topScores(10, function (highScores) {
+        $("#scoreTemplate").tmpl(highScores).prependTo(".highScore tbody");
+    });
+</script>
+
+<div class="startLeftPanel">
+    <h2>Let's start some chain reactions!</h2>
+    <p>The goal of this game is to get as many explosions as possible. The more explosions you get in a chain reaction - the more points you get.<br /> Have fun!</p>
+	                    
+    <div class="center">
+        <button id="startGame" class="largeButton">Start Game</button>
+    </div>
+</div>
+<div class="startRightPanel">
+    <h2>High Score</h2>
+    
+    <script id="scoreTemplate" type="text/x-jquery-tmpl">
+        <tr>
+            <td class="number">${position}.</td>
+            <td class="name">${name}</td>
+            <td class="score">${util.formatNumber(points)}</td>
+        </tr>
+    </script>
+
+    <table class="highScore">
+        <tbody>
+            <tr>
+                <td colspan="3" id="top100"><a id="top100Link" href="#">Top 100 »</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+﻿<div id="suc" class="center topSpaceLarge">
+    <h2>Submit your score</h2>
+    <p class="topSpaceMedium">
+        Score: <span class="bold" id="score">0</span>.
+    </p>
+    <p>
+        Enter your name to submit the score:<br />
+        <input type="text" id="name" size="30" placeholder="Name" />
+    </p>
+
+    <div>
+        <button id="cancel" class="smallButton">Cancel</button>
+        <button id="submit" class="largeButton">Submit</button>
+    </div>            
+</div>
+
+<script type="text/javascript">
+    $('#name').val(localStorage.name);
+
+    $('#cancel').click(function () {
+        game.reset();
+        ui.updateStatusBar();
+        ui.loadOverlay(ui.files.start);
+    });
+
+    $('#submit').click(function () {
+        var name = $('#name').val();
+        if (name == null || name == "")
+            return;
+        localStorage.name = name;
+
+        highScore.save(name, game.stats.score, game.currentLevel, function () {
+            ui.loadOverlay(ui.files.start);
+        });
+
+
+    });
+    
+    $('#suc #level').text(game.currentLevel);
+    $('#suc #score').text(util.formatNumber(game.stats.score));
+
+</script>

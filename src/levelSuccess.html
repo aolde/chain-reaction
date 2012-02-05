@@ -1,0 +1,34 @@
+﻿<div id="suc" class="center topSpaceLarge">
+    <h2>Congratulations!</h2>
+    <p class="topSpaceMedium">
+        You finished level <span class="bold" id="level">0</span> with <span class="bold" id="explosions">0</span> explosions 
+        and earned <span class="bold" id="levelScore">0</span> points. <br />
+
+        Your longest chain reaction was <span class="bold" id="reactions">0</span> explosions.<br />
+        
+        Your total score is now: <span class="bold" id="score"></span>.
+        
+        <hr />
+
+        Next level requires <span id="required">0</span> out of <span id="total">0</span> balls.
+    </p>
+                        
+    <button id="nextLevel" class="largeButton topSpaceSmall">Next Level</button>
+</div>
+
+<script type="text/javascript">
+    $('#nextLevel').click(function () {
+        game.loadNextLevel();
+        ui.overlayClose();
+    });
+    $('#suc #level').text(game.currentLevel);
+    $('#suc #explosions').text(game.getExplosions());
+    $('#suc #levelScore').text(util.formatNumber(game.stats.levelScore));
+    $('#suc #score').text(util.formatNumber(game.stats.score));
+    $('#suc #reactions').text(game.getLongestReaction());
+
+    var nextLevel = levels[game.currentLevel + 1];
+    $('#required').text(nextLevel.requiredBalls);
+    $('#total').text(nextLevel.ballCount);
+
+</script>

@@ -1,0 +1,33 @@
+﻿<div id="suc" class="center topSpaceLarge">
+    <h2>You made it through all levels!</h2>
+    <p class="topSpaceMedium">
+        You finished the last level with <span class="bold" id="explosions">0</span> explosions 
+        and earned <span class="bold" id="levelScore">0</span> points. <br />
+
+        Your longest chain reaction was <span class="bold" id="reactions">0</span> explosions.<br />    </p>
+    <p>
+        Your total score is: <span class="bold" id="score"></span>. <br />
+        Submit the score to the scoreboard to compete for the first place!
+    </p>
+    <div class="center topSpaceMedium">
+        <button id="submitScore" class="largeButton">Submit my score</button>
+        <i>- or -</i>
+        <button id="newGame" class="largeButton">New Game</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#newGame').click(function () {
+        game.init('#game');
+        ui.overlayClose();
+    });
+
+    $('#submitScore').click(function () {
+        ui.loadOverlay(ui.files.submitScore);
+    });
+
+    $('#suc #explosions').text(game.getExplosions());
+    $('#suc #levelScore').text(util.formatNumber(game.stats.levelScore));
+    $('#suc #score').text(util.formatNumber(game.stats.score));
+    $('#suc #reactions').text(game.getLongestReaction());
+</script>

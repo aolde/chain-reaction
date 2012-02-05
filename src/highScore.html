@@ -1,0 +1,28 @@
+﻿<script type="text/javascript">
+    $('.back').click(function () { ui.loadOverlay(ui.files.start); });
+
+    highScore.topScores(100, function (highScores) {
+        $("#scoreTemplate").tmpl(highScores).prependTo(".highScore tbody");
+    });
+</script>
+
+<button class="back tinyButton right">Back</button>
+
+<h2>High Score</h2>
+    
+<script id="scoreTemplate" type="text/x-jquery-tmpl">
+    <tr>
+        <td class="number">${position}.</td>
+        <td class="name">${name}</td>
+        <td class="score">${util.formatNumber(points)}</td>
+    </tr>
+</script>
+
+<table class="highScore">
+    <tbody>
+    </tbody>
+</table>
+
+<button class="back tinyButton topSpaceSmall bottomSpaceSmall right">Back</button>
+<div class="clear"></div>
+
