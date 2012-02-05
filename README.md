@@ -18,3 +18,6 @@ Credit
 -------
 **Chain Rxn** - Original game  
 http://chainrxn.zwigglers.com/
+
+Font used in game is [Diavlo](http://www.exljbris.com/diavlo.html "Diavlo").  
+A font by Jos Buivenga (exljbris).
