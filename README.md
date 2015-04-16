@@ -1,6 +1,6 @@
 Chain Reaction - HTML5 & canvas
 ========================================
-My contribution to the HTML5 Game Jam hosted by [Nansen](http://www.nansen.se "Nansen - Web Agency"). A demo can be found [here](http://spel.nansen.se/andreas "Chain Reaction").
+My contribution to the HTML5 Game Jam hosted by [Nansen](http://www.nansen.se "Nansen - Web Agency"). A demo can be found [here](http://chainreaction.simply.io/ "Chain Reaction").
 
 ![Chain Reaction](https://github.com/codingbug/chain-reaction/raw/master/docs/screenshot.png)
 
